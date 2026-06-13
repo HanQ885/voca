@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voca Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Vocabulary Performance</p>
+        <h1>Voca Practice</h1>
+      </div>
+      <div class="header-actions">
+        <button id="shuffleBtn" class="ghost-btn" type="button">섞기</button>
+        <button id="resetBtn" class="ghost-btn danger" type="button">오답 초기화</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="summary-grid" aria-label="요약">
+        <div class="metric">
+          <span>단어</span>
+          <strong id="termCount">0</strong>
+        </div>
+        <div class="metric">
+          <span>예문</span>
+          <strong id="exampleCount">0</strong>
+        </div>
+        <div class="metric">
+          <span>문제</span>
+          <strong id="questionCount">0</strong>
+        </div>
+        <div class="metric warn">
+          <span>오답</span>
+          <strong id="wrongCount">0</strong>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="유형">
+        <button class="tab active" type="button" data-task="task1">유형 1</button>
+        <button class="tab" type="button" data-task="task2">유형 2</button>
+        <button class="tab" type="button" data-task="task3">유형 3</button>
+        <button class="tab" type="button" data-task="task4">유형 4</button>
+        <button class="tab" type="button" data-task="wrong">오답</button>
+      </nav>
+
+      <section class="controls" aria-label="필터">
+        <div class="segmented" id="partFilter">
+          <button class="segment active" type="button" data-part="all">전체</button>
+          <button class="segment" type="button" data-part="Part 1">Part 1</button>
+          <button class="segment" type="button" data-part="Part 2">Part 2</button>
+          <button class="segment" type="button" data-part="Part 3">Part 3</button>
+          <button class="segment" type="button" data-part="Part 4">Part 4</button>
+        </div>
+        <label class="toggle">
+          <input id="wrongOnlyToggle" type="checkbox" />
+          <span>오답만</span>
+        </label>
+      </section>
+
+      <section id="practiceView" class="practice">
+        <div class="question-head">
+          <div>
+            <span id="taskLabel" class="pill">유형 1</span>
+            <span id="partLabel" class="pill muted">전체</span>
+          </div>
+          <div class="progress">
+            <span id="questionIndex">0</span>
+            <span>/</span>
+            <span id="questionTotal">0</span>
+          </div>
+        </div>
+
+        <article class="question-panel">
+          <p id="instruction" class="instruction"></p>
+          <div id="koreanPrompt" class="korean-prompt hidden"></div>
+          <h2 id="questionPrompt" class="question-prompt"></h2>
+          <div id="hintLine" class="hint-line hidden"></div>
+          <div id="wrongBadge" class="wrong-badge hidden"></div>
+        </article>
+
+        <div id="choiceArea" class="choices"></div>
+
+        <form id="inputArea" class="answer-form hidden">
+          <input id="answerInput" type="text" autocomplete="off" spellcheck="false" />
+          <button class="primary-btn" type="submit">채점</button>
+        </form>
+
+        <div id="feedback" class="feedback hidden" role="status"></div>
+
+        <div class="nav-row">
+          <button id="prevBtn" class="secondary-btn" type="button">이전</button>
+          <button id="showAnswerBtn" class="secondary-btn" type="button">정답 보기</button>
+          <button id="nextBtn" class="primary-btn" type="button">다음</button>
+        </div>
+      </section>
+
+      <section id="wrongView" class="wrong-view hidden">
+        <div class="wrong-head">
+          <h2>오답</h2>
+          <span id="wrongSummary">0개</span>
+        </div>
+        <div id="wrongList" class="wrong-list"></div>
+      </section>
+    </main>
+
+    <script src="data/voca-data-chunk-00.js"></script>
+    <script src="data/voca-data-chunk-01.js"></script>
+    <script src="data/voca-data-chunk-02.js"></script>
+    <script src="data/voca-data-chunk-03.js"></script>
+    <script src="data/voca-data-chunk-04.js"></script>
+    <script src="data/voca-data-chunk-05.js"></script>
+    <script src="data/voca-data-chunk-06.js"></script>
+    <script src="data/voca-data-chunk-07.js"></script>
+    <script src="data/voca-data-chunk-08.js"></script>
+    <script src="data/voca-data.js"></script>
+    <script src="app-chunk-00.js"></script>
+    <script src="app-chunk-01.js"></script>
+    <script src="app-chunk-02.js"></script>
+    <script src="app-chunk-03.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
