@@ -9,7 +9,7 @@ Vocabulary performance practice app for the four announced task types.
 - Part 3 textbook examples: 76
 - Part 4 quotes: 51
 
-The app builds every practice question from `data/voca-data.js` and stores wrong answers with wrong counts in the browser's local storage.
+The app loads compressed data through `data/voca-data.js` and stores wrong answers with wrong counts in the browser's local storage.
 
 ## Run
 
