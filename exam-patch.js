@@ -59,6 +59,23 @@
 
   source = replaceBetween(
     source,
+    "    const task1 = [",
+    "    const task2 = DATA.examples.map",
+    `    const task1 = DATA.terms.map((item) => ({
+      id: \`task1-\${item.id}\`,
+      task: "task1",
+      part: "Part 1",
+      prompt: item.term,
+      answer: item.meaning,
+      instruction: taskInfo.task1.instruction,
+      source: item,
+    }));
+
+`,
+  );
+
+  source = replaceBetween(
+    source,
     "  function renderQuestion() {",
     "  function submitAnswer(value, question, selectedButton) {",
     `  function renderQuestion() {
