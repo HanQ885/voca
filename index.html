@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Voca Practice</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="exam.css" />
   </head>
   <body>
     <header class="app-header">
@@ -39,10 +40,10 @@
       </section>
 
       <nav class="tabs" aria-label="유형">
-        <button class="tab active" type="button" data-task="task1">유형 1</button>
-        <button class="tab" type="button" data-task="task2">유형 2</button>
-        <button class="tab" type="button" data-task="task3">유형 3</button>
-        <button class="tab" type="button" data-task="task4">유형 4</button>
+        <button class="tab active" type="button" data-task="task1">Task 1</button>
+        <button class="tab" type="button" data-task="task2">Task 2</button>
+        <button class="tab" type="button" data-task="task3">Task 3</button>
+        <button class="tab" type="button" data-task="task4">Task 4</button>
         <button class="tab" type="button" data-task="wrong">오답</button>
       </nav>
 
@@ -62,8 +63,9 @@
 
       <section id="practiceView" class="practice">
         <div class="question-head">
-          <div>
-            <span id="taskLabel" class="pill">유형 1</span>
+          <div class="task-title-row">
+            <span id="taskLabel" class="pill">Task 1</span>
+            <p id="instruction" class="instruction"></p>
             <span id="partLabel" class="pill muted">전체</span>
           </div>
           <div class="progress">
@@ -73,22 +75,19 @@
           </div>
         </div>
 
-        <article class="question-panel">
-          <p id="instruction" class="instruction"></p>
+        <article id="questionPanel" class="question-panel">
           <div id="koreanPrompt" class="korean-prompt hidden"></div>
-          <h2 id="questionPrompt" class="question-prompt"></h2>
-          <div id="hintLine" class="hint-line hidden"></div>
-          <div id="wrongBadge" class="wrong-badge hidden"></div>
+          <div class="question-line">
+            <span id="questionNo" class="question-no"></span>
+            <h2 id="questionPrompt" class="question-prompt"></h2>
+          </div>
+          <div id="choiceArea" class="choices"></div>
+          <form id="inputArea" class="answer-form hidden">
+            <input id="answerInput" type="text" autocomplete="off" spellcheck="false" />
+            <button class="primary-btn" type="submit">채점</button>
+          </form>
+          <div id="feedback" class="feedback hidden" role="status"></div>
         </article>
-
-        <div id="choiceArea" class="choices"></div>
-
-        <form id="inputArea" class="answer-form hidden">
-          <input id="answerInput" type="text" autocomplete="off" spellcheck="false" />
-          <button class="primary-btn" type="submit">채점</button>
-        </form>
-
-        <div id="feedback" class="feedback hidden" role="status"></div>
 
         <div class="nav-row">
           <button id="prevBtn" class="secondary-btn" type="button">이전</button>
@@ -122,6 +121,7 @@
     <script src="app-chunk-01.js"></script>
     <script src="app-chunk-02.js"></script>
     <script src="app-chunk-03.js"></script>
+    <script src="exam-patch.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
