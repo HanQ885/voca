@@ -13,4 +13,4 @@ The app builds every practice question from `data/voca-data.js` and stores wrong
 
 ## Run
 
-Open `index.html` in a browser. No install step is required.
+Open `index.html` in a current Chrome, Edge, or other modern browser. No install step is required.
