@@ -62,9 +62,37 @@ __vocaAppSource = __vocaAppSource
   function makeBlankQuestion(task, item, target, instruction) {`,
   );
 window.VOCA_APP_CHUNKS = undefined;
-Promise.resolve(window.VOCA_DATA_READY)
+
+function waitForVocaData() {
+  if (window.VOCA_DATA) return Promise.resolve(window.VOCA_DATA);
+  if (window.VOCA_DATA_READY) return Promise.resolve(window.VOCA_DATA_READY);
+
+  return new Promise((resolve, reject) => {
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      attempts += 1;
+      if (window.VOCA_DATA) {
+        window.clearInterval(timer);
+        resolve(window.VOCA_DATA);
+        return;
+      }
+      if (window.VOCA_DATA_READY) {
+        window.clearInterval(timer);
+        Promise.resolve(window.VOCA_DATA_READY).then(resolve, reject);
+        return;
+      }
+      if (attempts >= 100) {
+        window.clearInterval(timer);
+        reject(new Error("Vocabulary data did not load."));
+      }
+    }, 50);
+  });
+}
+
+waitForVocaData()
   .then(() => {
     window.applyVocaTargets?.();
+    if (!window.VOCA_DATA?.terms?.length) throw new Error("Vocabulary data is empty.");
     Function(__vocaAppSource)();
   })
   .catch((error) => {
