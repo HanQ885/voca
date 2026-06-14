@@ -56,7 +56,7 @@ __vocaAppSource = __vocaAppSource
   }
 
   function targetItem(item, targetIndex) {
-    return targetIndex ? { ...item, id: `${item.id}-u${targetIndex + 1}` } : item;
+    return targetIndex ? { ...item, id: \`\${item.id}-u\${targetIndex + 1}\` } : item;
   }
 
   function makeBlankQuestion(task, item, target, instruction) {`,
